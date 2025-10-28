@@ -1,0 +1,106 @@
+[
+  {
+    "name": "make_random_guess_bounds_and_diversity",
+    "docstring": "Checks that make_random_guess stays in bounds and produces diverse values.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "make_good_guess_test_cases",
+    "docstring": "Ensures make_good_guess correctly returns the midpoint in several cases.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "update_range_test_cases",
+    "docstring": "Ensures update_range updates bounds correctly for higher, lower, correct, and invalid responses.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "generate_secret_number_bounds_and_diversity",
+    "docstring": "Checks that generate_secret_number stays in bounds and produces diverse values.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "give_response_to_guess_test_cases",
+    "docstring": "Ensures give_response_to_guess returns \"higher\", \"lower\", or \"correct\" appropriately.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "play_game_with_good_guesser_num_rounds",
+    "docstring": "Ensures the good guesser never takes more than 7 guesses on [1,100].",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "play_game_with_random_guesser_num_rounds",
+    "docstring": "Ensures the random guesser converges to an average between 7 and 8 guesses.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "run_strategy_comparisons_converges_reasonably",
+    "docstring": "Ensures run_strategy_comparisons gives plausible averages and shows good < random.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": null,
+    "manifest_path": null
+  },
+  {
+    "name": "COMMIT_COUNT_1",
+    "docstring": "Ensures at least ## commits.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": 2,
+    "manifest_path": null
+  },
+  {
+    "name": "COMMIT_COUNT_2",
+    "docstring": "Ensures at least ## commits.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": 4,
+    "manifest_path": null
+  },
+  {
+    "name": "COMMIT_COUNT_3",
+    "docstring": "Ensures at least ## commits.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": 6,
+    "manifest_path": null
+  },
+  {
+    "name": "COMMIT_COUNT_4",
+    "docstring": "Ensures at least ## commits.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": 8,
+    "manifest_path": null
+  },
+  {
+    "name": "COMMIT_COUNT_5",
+    "docstring": "Ensures at least ## commits.",
+    "timeout": 10,
+    "points": 1,
+    "min_commits": 10,
+    "manifest_path": null
+  }
+]

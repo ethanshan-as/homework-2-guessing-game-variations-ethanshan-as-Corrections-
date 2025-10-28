@@ -1,0 +1,173 @@
+name: Autograding Tests
+on: [push, repository_dispatch]
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy,rustfmt
+
+      - name: make_random_guess_bounds_and_diversity
+        id: make-random-guess-bounds-and-diversity
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "make_random_guess_bounds_and_diversity"
+          setup-command: ""
+          command: "cargo test make_random_guess_bounds_and_diversity"
+          timeout: 10
+          max-score: 1
+
+      - name: make_good_guess_test_cases
+        id: make-good-guess-test-cases
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "make_good_guess_test_cases"
+          setup-command: ""
+          command: "cargo test make_good_guess_test_cases"
+          timeout: 10
+          max-score: 1
+
+      - name: update_range_test_cases
+        id: update-range-test-cases
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "update_range_test_cases"
+          setup-command: ""
+          command: "cargo test update_range_test_cases"
+          timeout: 10
+          max-score: 1
+
+      - name: generate_secret_number_bounds_and_diversity
+        id: generate-secret-number-bounds-and-diversity
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "generate_secret_number_bounds_and_diversity"
+          setup-command: ""
+          command: "cargo test generate_secret_number_bounds_and_diversity"
+          timeout: 10
+          max-score: 1
+
+      - name: give_response_to_guess_test_cases
+        id: give-response-to-guess-test-cases
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "give_response_to_guess_test_cases"
+          setup-command: ""
+          command: "cargo test give_response_to_guess_test_cases"
+          timeout: 10
+          max-score: 1
+
+      - name: play_game_with_good_guesser_num_rounds
+        id: play-game-with-good-guesser-num-rounds
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "play_game_with_good_guesser_num_rounds"
+          setup-command: ""
+          command: "cargo test play_game_with_good_guesser_num_rounds"
+          timeout: 10
+          max-score: 1
+
+      - name: play_game_with_random_guesser_num_rounds
+        id: play-game-with-random-guesser-num-rounds
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "play_game_with_random_guesser_num_rounds"
+          setup-command: ""
+          command: "cargo test play_game_with_random_guesser_num_rounds"
+          timeout: 10
+          max-score: 1
+
+      - name: run_strategy_comparisons_converges_reasonably
+        id: run-strategy-comparisons-converges-reasonably
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "run_strategy_comparisons_converges_reasonably"
+          setup-command: ""
+          command: "cargo test run_strategy_comparisons_converges_reasonably"
+          timeout: 10
+          max-score: 1
+
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: COMMIT_COUNT_1
+        id: commit-count-1
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "COMMIT_COUNT_1"
+          setup-command: ""
+          command: "bash ./.autograder/commit_count_1.sh"
+          timeout: 10
+          max-score: 1
+
+      - name: COMMIT_COUNT_2
+        id: commit-count-2
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "COMMIT_COUNT_2"
+          setup-command: ""
+          command: "bash ./.autograder/commit_count_2.sh"
+          timeout: 10
+          max-score: 1
+
+      - name: COMMIT_COUNT_3
+        id: commit-count-3
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "COMMIT_COUNT_3"
+          setup-command: ""
+          command: "bash ./.autograder/commit_count_3.sh"
+          timeout: 10
+          max-score: 1
+
+      - name: COMMIT_COUNT_4
+        id: commit-count-4
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "COMMIT_COUNT_4"
+          setup-command: ""
+          command: "bash ./.autograder/commit_count_4.sh"
+          timeout: 10
+          max-score: 1
+
+      - name: COMMIT_COUNT_5
+        id: commit-count-5
+        uses: classroom-resources/autograding-command-grader@v1
+        with:
+          test-name: "COMMIT_COUNT_5"
+          setup-command: ""
+          command: "bash ./.autograder/commit_count_5.sh"
+          timeout: 10
+          max-score: 1
+
+      - name: Autograding Reporter
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          MAKE-RANDOM-GUESS-BOUNDS-AND-DIVERSITY_RESULTS: "${{steps.make-random-guess-bounds-and-diversity.outputs.result}}"
+          MAKE-GOOD-GUESS-TEST-CASES_RESULTS: "${{steps.make-good-guess-test-cases.outputs.result}}"
+          UPDATE-RANGE-TEST-CASES_RESULTS: "${{steps.update-range-test-cases.outputs.result}}"
+          GENERATE-SECRET-NUMBER-BOUNDS-AND-DIVERSITY_RESULTS: "${{steps.generate-secret-number-bounds-and-diversity.outputs.result}}"
+          GIVE-RESPONSE-TO-GUESS-TEST-CASES_RESULTS: "${{steps.give-response-to-guess-test-cases.outputs.result}}"
+          PLAY-GAME-WITH-GOOD-GUESSER-NUM-ROUNDS_RESULTS: "${{steps.play-game-with-good-guesser-num-rounds.outputs.result}}"
+          PLAY-GAME-WITH-RANDOM-GUESSER-NUM-ROUNDS_RESULTS: "${{steps.play-game-with-random-guesser-num-rounds.outputs.result}}"
+          RUN-STRATEGY-COMPARISONS-CONVERGES-REASONABLY_RESULTS: "${{steps.run-strategy-comparisons-converges-reasonably.outputs.result}}"
+          COMMIT-COUNT-1_RESULTS: "${{steps.commit-count-1.outputs.result}}"
+          COMMIT-COUNT-2_RESULTS: "${{steps.commit-count-2.outputs.result}}"
+          COMMIT-COUNT-3_RESULTS: "${{steps.commit-count-3.outputs.result}}"
+          COMMIT-COUNT-4_RESULTS: "${{steps.commit-count-4.outputs.result}}"
+          COMMIT-COUNT-5_RESULTS: "${{steps.commit-count-5.outputs.result}}"
+        with:
+          runners: make-random-guess-bounds-and-diversity,make-good-guess-test-cases,update-range-test-cases,generate-secret-number-bounds-and-diversity,give-response-to-guess-test-cases,play-game-with-good-guesser-num-rounds,play-game-with-random-guesser-num-rounds,run-strategy-comparisons-converges-reasonably,commit-count-1,commit-count-2,commit-count-3,commit-count-4,commit-count-5
